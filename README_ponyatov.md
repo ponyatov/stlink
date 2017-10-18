@@ -2,6 +2,7 @@ Some hot fixes for:
 [![GitHub release](https://img.shields.io/github/release/texane/stlink.svg)](https://github.com/texane/stlink/releases/1.4.0)
 
 - [x] [issue 645](https://github.com/texane/stlink/issues/645): add CMAKE_ABSOLUTE_PREFIX
+- [ ] [issue 646](https://github.com/texane/stlink/issues/646): build and run without root access
 
 Use this Makefile snippet:
 ```
