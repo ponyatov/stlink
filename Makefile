@@ -8,10 +8,11 @@ all: release
 ci: debug release test
 
 help:
-	@echo "      release: Run a release build"
+	@echo "      release: Run a release build (default)"
 	@echo "        debug: Run a debug build"
 	@echo "         lint: Lint check all source-code"
 	@echo "         test: Build and run tests"
+	@echo "      install: Install into system (can use DESTDIR=/home/user/)"
 	@echo "        clean: Clean all build output"
 	@echo "rebuild_cache: Rebuild all CMake caches"
 
@@ -26,7 +27,7 @@ debug: build/Debug
 release: build/Release
 	@echo "[RELEASE]"
 	@$(MAKE) -C build/Release
-
+	
 package: build/Release
 	@echo "[PACKAGE] Release"
 	@$(MAKE) -C build/Release package
@@ -41,6 +42,10 @@ build/Debug:
 build/Release:
 	@mkdir -p $@
 	@cd $@ && cmake -Wno-dev -DCMAKE_BUILD_TYPE=Release $(CMAKEFLAGS) ../../
+
+install: build/Release
+	@echo "[INSTALL]"
+	@cd $< && $(MAKE) install
 
 clean:
 	@echo "[CLEAN]"
